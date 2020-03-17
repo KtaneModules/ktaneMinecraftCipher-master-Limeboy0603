@@ -147,6 +147,7 @@ public class MinecraftCipher : MonoBehaviour
 
     void init()
     {
+        clear_input();
         generate_message();
     }
 
