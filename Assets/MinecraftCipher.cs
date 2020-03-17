@@ -341,19 +341,16 @@ public class MinecraftCipher : MonoBehaviour
     {
         input = "";
         Input_Display.text = input;
-        audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, clear.transform);
     }
 
     void handle_input(int i)
     {
         input += "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ElementAt(i);
         Input_Display.text = input;
-        audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Button[i].transform);
     }
 
     void checkAns()
     {
-        audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, submit.transform);
         Debug.LogFormat("[Minecraft Cipher #{0}]Input: {1}", _moduleId, input);
         if(input==answer)
         {
