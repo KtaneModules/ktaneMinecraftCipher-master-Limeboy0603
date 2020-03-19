@@ -6726,7 +6726,6 @@ MonoBehaviour:
   submit: {fileID: 114866300002958132}
   Message_Display: {fileID: 102524919003664520}
   Input_Display: {fileID: 102165418110458188}
-  audio: {fileID: 114788524094640220}
 --- !u!114 &114338451970453506
 MonoBehaviour:
   m_ObjectHideFlags: 1

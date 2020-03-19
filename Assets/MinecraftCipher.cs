@@ -13,7 +13,6 @@ public class MinecraftCipher : MonoBehaviour
     public KMSelectable[] Button;
     public KMSelectable clear, submit;
     public TextMesh Message_Display, Input_Display;
-    public KMAudio audio;
     static int _moduleIdCounter = 1;
     int _moduleId = 0;
 
@@ -365,4 +364,33 @@ public class MinecraftCipher : MonoBehaviour
         }
     }
     //tp not avaliable
+
+//#pragma warning disable 414
+//    private string TwitchHelpMessage = "!{0} QWERTYUI [Input letters] | !{0} clear [Clears input] | !{0} submit [Submit input]";
+//#pragma warning restore 414
+
+//    IEnumerable ProcessTwitchCommand(string command)
+//    {
+//        command = command.ToLowerInvariant().Trim();
+//        if (command.Equals("clear"))
+//        {
+//            clear.OnInteract();
+//            yield return null;
+//        }
+//        else if (command.Equals("submit"))
+//        {
+//            submit.OnInteract();
+//            yield return null;
+//        }
+//        else
+//        {
+//            command = command.ToUpperInvariant().Trim();
+//            foreach (char letter in command)
+//            {
+//                Button[getAlphabeticPosition(letter) - 1].OnInteract();
+//                yield return new WaitForSeconds(0.1f);
+//            }
+//            yield return null;
+//        }
+//    }
 }
