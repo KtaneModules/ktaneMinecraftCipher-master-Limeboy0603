@@ -292,13 +292,13 @@ public class MinecraftCipher : MonoBehaviour
                     valid[i] = false;
                 else if (valid[i - 1] || valid[i - 2] == false)
                     valid[i] = true;
-                else if (digital_root(decrypted_return_value[i]) == (decrypted_return_value[i] % 10) || digital_root(decrypted_return_value[i]) == (decrypted_return_value[i] / 10))
+                else if (digital_root(decrypted_return_value[i]) == (decrypted_return_value[i] % 10) || digital_root(decrypted_return_value[i]) == (decrypted_return_value[i]- decrypted_return_value[i] % 10) / 10)
                     valid[i] = true;
                 else valid[i] = false;
             }
-            if(valid[i]==true)                
+            if (valid[i] == true)
             {
-                Debug.LogFormat("[Minecraft Cipher #{0}]Letter {1} is valid, digital root is {2}.", _moduleId,i + 1, digital_root(decrypted_return_value[i]));
+                Debug.LogFormat("[Minecraft Cipher #{0}]Letter {1} is valid, digital root is {2}.", _moduleId, i + 1, digital_root(decrypted_return_value[i]));
                 switch (digital_root(decrypted_return_value[i]))
                 {
                     case 1:
@@ -330,6 +330,7 @@ public class MinecraftCipher : MonoBehaviour
                         break;
                 }
             }
+            else Debug.LogFormat("[Minecraft Cipher #{0}]Letter {1} is invalid, digital root is {2}.", _moduleId, i + 1, digital_root(decrypted_return_value[i]));
             answer_array[i] = getAlphabeticPosition(decrypted_return_value[i]-1);
         }
         answer = new string(answer_array);
