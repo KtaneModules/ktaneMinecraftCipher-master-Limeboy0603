@@ -215,7 +215,7 @@ public class MinecraftCipher : MonoBehaviour
             }
         }
         encrypted_message_chararray[0] = getAlphabeticPosition(getAlphabeticPosition(chosenwordarray[0]) - obtained[0] - 1);
-        Debug.LogFormat("Chosen word: {0}",chosenword);
+        Debug.LogFormat("[Minecraft Cipher #{0}]Chosen word: {1}", _moduleId,chosenword);
         Debug.LogFormat("[Minecraft Cipher #{0}]Letter 1: {1},{2}",_moduleId, encrypted_message_chararray[0],obtained[0]);
         if ((Bomb.GetBatteryHolderCount() == 4) && (Bomb.GetPortCount(Port.Parallel) > 0))
         {
@@ -288,11 +288,11 @@ public class MinecraftCipher : MonoBehaviour
             }
             else
             {
-                if (valid[i - 1] && valid[i - 2] == true)
+                if (valid[i - 1] == true && valid[i - 2] == true)
                     valid[i] = false;
-                else if (valid[i - 1] || valid[i - 2] == false)
+                else if (valid[i - 1] == false && valid[i - 2] == false)
                     valid[i] = true;
-                else if (digital_root(decrypted_return_value[i]) == (decrypted_return_value[i] % 10) || digital_root(decrypted_return_value[i]) == (decrypted_return_value[i]- decrypted_return_value[i] % 10) / 10)
+                else if (digital_root(decrypted_return_value[i]) == (decrypted_return_value[i] % 10) || digital_root(decrypted_return_value[i]) == (decrypted_return_value[i] - decrypted_return_value[i] % 10) / 10)
                     valid[i] = true;
                 else valid[i] = false;
             }
@@ -308,7 +308,7 @@ public class MinecraftCipher : MonoBehaviour
                         decrypted_return_value[i] += Bomb.GetSerialNumberLetters().Count();
                         break;
                     case 3:
-                        decrypted_return_value[i] += Bomb.GetModuleNames().Count(); ;
+                        decrypted_return_value[i] = decrypted_return_value[i] + Bomb.GetModuleNames().Count() + 1;
                         break;
                     case 4:
                         decrypted_return_value[i] = 27 - decrypted_return_value[i];
