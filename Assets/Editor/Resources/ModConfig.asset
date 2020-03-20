@@ -17,12 +17,11 @@ MonoBehaviour:
   description: 'Decode a message in galatic alphabet and return a encoded message.
 
 
-    tp: still working on it
+    TP is now avaliable
 
-    manual: depends of repo dudes work on it
+    Module update: randomization
 
-
-    will add tp and randomization in the future'
+'
   version: 
   outputFolder: build
   previewImage: {fileID: 2800000, guid: b2dff1dc8d458684c88c7b9889134b5e, type: 3}

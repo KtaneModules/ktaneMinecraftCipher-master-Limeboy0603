@@ -1515,7 +1515,7 @@ GameObject:
   - component: {fileID: 102199613124892808}
   - component: {fileID: 114180635643726848}
   m_Layer: 0
-  m_Name: E_light
+  m_Name: E_letter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6726,6 +6726,33 @@ MonoBehaviour:
   submit: {fileID: 114866300002958132}
   Message_Display: {fileID: 102524919003664520}
   Input_Display: {fileID: 102165418110458188}
+  button_label:
+  - {fileID: 102329110472822966}
+  - {fileID: 102638183648393738}
+  - {fileID: 102364751044049976}
+  - {fileID: 102233343579962012}
+  - {fileID: 102199613124892808}
+  - {fileID: 102783532693414278}
+  - {fileID: 102280567116151368}
+  - {fileID: 102095196618260954}
+  - {fileID: 102570184859355420}
+  - {fileID: 102977978881854258}
+  - {fileID: 102243532595195342}
+  - {fileID: 102930546742895810}
+  - {fileID: 102594969119779944}
+  - {fileID: 102818000881734884}
+  - {fileID: 102519186878423058}
+  - {fileID: 102826242858060712}
+  - {fileID: 102350640967778186}
+  - {fileID: 102102366635346882}
+  - {fileID: 102150796424059282}
+  - {fileID: 102078733535558094}
+  - {fileID: 102561925101406798}
+  - {fileID: 102345409085320624}
+  - {fileID: 102875078247595528}
+  - {fileID: 102509300424873006}
+  - {fileID: 102844779568329170}
+  - {fileID: 102366687065183800}
 --- !u!114 &114338451970453506
 MonoBehaviour:
   m_ObjectHideFlags: 1

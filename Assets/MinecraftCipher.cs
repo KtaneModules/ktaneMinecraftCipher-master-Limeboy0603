@@ -13,9 +13,11 @@ public class MinecraftCipher : MonoBehaviour
     public KMSelectable[] Button;
     public KMSelectable clear, submit;
     public TextMesh Message_Display, Input_Display;
+    public TextMesh[] button_label;
     static int _moduleIdCounter = 1;
     int _moduleId = 0;
 
+    
     string input = "";
     string answer;
     string[] decrypted_array = new string[36]
@@ -97,7 +99,8 @@ public class MinecraftCipher : MonoBehaviour
         "SILVERFISH",
         "UNINSTALL",
     };
-   
+
+    char[] alphabets_exist = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     string chosenword;
     int getAlphabeticPosition(char c)
     {
@@ -106,16 +109,13 @@ public class MinecraftCipher : MonoBehaviour
 
     char getAlphabeticPosition(int x)
     {
-        //if (x < 1)
-        //    x += 26;
-        //else if (x > 26)
-        //    x -= 26;
         while (x > 25)
             x -= 26;
         while (x < 0)
             x += 26;
         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ElementAt(x);
     }
+
     void Awake()
     {
         _moduleId = _moduleIdCounter++;
@@ -147,6 +147,7 @@ public class MinecraftCipher : MonoBehaviour
 
     void init()
     {
+        randomization();
         clear_input();
         generate_message();
     }
@@ -157,6 +158,28 @@ public class MinecraftCipher : MonoBehaviour
         int k = j % 10 + j / 10;
         return k;
     }
+
+    void randomization()
+    { 
+        
+        for (int i = 0; i < 100; i++)
+        {
+            char temp;
+            int a = rnd.Range(0, 26);
+            int b;
+            do
+                b = rnd.Range(0, 26);
+            while (a == b);
+            temp=alphabets_exist[a];
+            alphabets_exist[a] = alphabets_exist[b];
+            alphabets_exist[b] = temp;
+        }
+        string randomized_string_logreturn = new string(alphabets_exist);
+        for (int i = 0; i <= 25; i++)
+            button_label[i].text = randomized_string_logreturn[i].ToString();
+        Debug.LogFormat("[Minecraft Cipher #{0}]Randomized keyboard in reading order:{1}", _moduleId, randomized_string_logreturn);
+    }
+
 
     void generate_message()
     {
@@ -345,7 +368,7 @@ public class MinecraftCipher : MonoBehaviour
 
     void handle_input(int i)
     {
-        input += "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ElementAt(i);
+        input += alphabets_exist.ElementAt(i).ToString();
         Input_Display.text = input;
     }
 
@@ -364,34 +387,42 @@ public class MinecraftCipher : MonoBehaviour
             init();
         }
     }
-    //tp not avaliable
 
-//#pragma warning disable 414
-//    private string TwitchHelpMessage = "!{0} QWERTYUI [Input letters] | !{0} clear [Clears input] | !{0} submit [Submit input]";
-//#pragma warning restore 414
+#pragma warning disable 414
+    private string TwitchHelpMessage = "!{0} 1 2 3 4 5 6 [Press button of that position] | !{0} clear [Clears input] | !{0} submit [Submit input]";
+#pragma warning restore 414
 
-//    IEnumerable ProcessTwitchCommand(string command)
-//    {
-//        command = command.ToLowerInvariant().Trim();
-//        if (command.Equals("clear"))
-//        {
-//            clear.OnInteract();
-//            yield return null;
-//        }
-//        else if (command.Equals("submit"))
-//        {
-//            submit.OnInteract();
-//            yield return null;
-//        }
-//        else
-//        {
-//            command = command.ToUpperInvariant().Trim();
-//            foreach (char letter in command)
-//            {
-//                Button[getAlphabeticPosition(letter) - 1].OnInteract();
-//                yield return new WaitForSeconds(0.1f);
-//            }
-//            yield return null;
-//        }
-//    }
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+        command = command.ToLowerInvariant().Trim();
+        if (command.Equals("clear"))
+        {
+            yield return null;
+            yield return new[] { clear };
+        }
+        else if (command.Equals("submit"))
+        {
+            yield return null;
+            yield return new[] { submit };
+        }
+        else
+        {
+            var numbers = new List<int>();
+            string[] parameters = command.Split(' ');
+            foreach(var s in parameters)
+            {
+                int i;
+                if (!int.TryParse(s.ToString(), out i) || i>26 || i<1)
+                    yield break;
+                numbers.Add(i);
+            }
+            foreach(int i in numbers)
+            {
+                yield return null;
+                Button[i - 1].OnInteract();
+                yield return new WaitForSeconds(0.125f);
+            }
+        }
+        yield return null;
+    }
 }
