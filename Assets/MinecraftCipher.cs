@@ -389,7 +389,7 @@ public class MinecraftCipher : MonoBehaviour
     }
 
 #pragma warning disable 414
-    private string TwitchHelpMessage = "!{0} 1 2 3 4 5 6 [Press button of that position] | !{0} clear [Clears input] | !{0} submit [Submit input]";
+    private string TwitchHelpMessage = "!{0} 1 2 3 4 5 6 [Press button of that position, space are required, no letters allowed] | !{0} clear [Clears input] | !{0} submit [Submit input] | You cannnot do !{0} submit (answer)";
 #pragma warning restore 414
 
     IEnumerator ProcessTwitchCommand(string command)
