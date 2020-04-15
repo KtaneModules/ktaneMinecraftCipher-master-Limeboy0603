@@ -290,7 +290,7 @@ public class MinecraftCipher : MonoBehaviour
         string encrypted_message = new string(encrypted_message_chararray);
         Message_Display.text=encrypted_message;
         string decrypted_return = return_message[chosenword_number];
-        Debug.LogFormat("[Minecraft Cipher #{0}]Retuen word: {1}",_moduleId,decrypted_return);
+        Debug.LogFormat("[Minecraft Cipher #{0}]Return word: {1}",_moduleId,decrypted_return);
         bool[] valid = new bool[decrypted_return.Length];
         int[] decrypted_return_value = new int[decrypted_return.Length];
         char[] answer_array = new char[decrypted_return.Length];
@@ -331,7 +331,7 @@ public class MinecraftCipher : MonoBehaviour
                         decrypted_return_value[i] += Bomb.GetSerialNumberLetters().Count();
                         break;
                     case 3:
-                        decrypted_return_value[i] = decrypted_return_value[i] + Bomb.GetModuleNames().Count() + 1;
+                        decrypted_return_value[i] += Bomb.GetModuleNames().Count();
                         break;
                     case 4:
                         decrypted_return_value[i] = 27 - decrypted_return_value[i];
