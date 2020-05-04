@@ -14,6 +14,7 @@ public class MinecraftCipher : MonoBehaviour
     public KMSelectable clear, submit;
     public TextMesh Message_Display, Input_Display;
     public TextMesh[] button_label;
+    public KMAudio Audio;
     static int _moduleIdCounter = 1;
     int _moduleId = 0;
 
@@ -364,16 +365,19 @@ public class MinecraftCipher : MonoBehaviour
     {
         input = "";
         Input_Display.text = input;
+        Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, clear.transform);
     }
 
     void handle_input(int i)
     {
         input += alphabets_exist.ElementAt(i).ToString();
         Input_Display.text = input;
+        Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Button[i].transform);
     }
 
     void checkAns()
     {
+        Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, submit.transform);
         Debug.LogFormat("[Minecraft Cipher #{0}]Input: {1}", _moduleId, input);
         if(input==answer)
         {
