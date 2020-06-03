@@ -383,6 +383,7 @@ public class MinecraftCipher : MonoBehaviour
         {
             GetComponent<KMBombModule>().HandlePass();
             Debug.LogFormat("[Minecraft Cipher #{0}]Correct. Module disarmed.",_moduleId);
+            Audio.PlaySoundAtTransform("Sweden", transform);
         }
         else
         {

@@ -14,14 +14,8 @@ MonoBehaviour:
   id: minecraftCipher
   title: Minecraft Cipher
   author: Limeboy
-  description: 'Decode a message in galatic alphabet and return a encoded message.
-
-
-    TP is now avaliable
-
-    Module update: randomization
-
-'
+  description: Decode a message in galatic alphabet and return a encoded message.
+    Otherwise, BLOWS UP, THEN UR HELPBAR DROPED AND YOU COULD USE A ONE-UP!!
   version: 
   outputFolder: build
   previewImage: {fileID: 2800000, guid: b2dff1dc8d458684c88c7b9889134b5e, type: 3}
